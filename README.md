@@ -7,7 +7,8 @@ For now the behaviour is hardcoded. For getpwuid and getpwuid_r calls all UIDs >
 
 Dockerfile:
 
-    RUN curl -O https://raw.githubusercontent.com/appuio/libmapuid/master/lib/libmapuid.so /usr/local/lib/libmapuid.so
+    RUN curl https://raw.githubusercontent.com/appuio/libmapuid/master/lib/libmapuid.so -o /usr/local/lib/libmapuid.so && \
+        chmod 755 /usr/local/lib/libmapuid.so
     
     CMD ["/usr/bin/env", "LD_PRELOAD=/usr/local/lib/libmapuid.so", "mycommand", "myargs"]
     
